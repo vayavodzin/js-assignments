@@ -30,7 +30,9 @@
  *
  */
 function getFizzBuzz(num) {
-    throw new Error('Not implemented');
+    let mul3 = num % 3 ? '' : 'Fizz';
+    let mul5 = num % 5 ? '' : 'Buzz';
+    return (mul3 && mul5) ? mul3 + mul5 : (mul3) ? mul3 : (mul5) ? mul5 : num;
 }
 
 
@@ -46,7 +48,10 @@ function getFizzBuzz(num) {
  *   10 => 3628800
  */
 function getFactorial(n) {
-    throw new Error('Not implemented');
+    if (n === 1) {
+      return 1;
+    }
+    return n * getFactorial(n - 1);
 }
 
 
@@ -63,7 +68,10 @@ function getFactorial(n) {
  *   -1,1  =>  0  ( = -1 + 0 + 1 )
  */
 function getSumBetweenNumbers(n1, n2) {
-    throw new Error('Not implemented');
+   for (var sum = 0; n1 <= n2; n1++) {
+        sum += n1;
+    }
+    return sum;
 }
 
 
@@ -82,7 +90,7 @@ function getSumBetweenNumbers(n1, n2) {
  *   10,10,10 =>  true
  */
 function isTriangle(a,b,c) {
-    throw new Error('Not implemented');
+    return a + b > c && b + c > a && c + a > b;
 }
 
 
@@ -270,7 +278,10 @@ function isCreditCardNumber(ccn) {
  *   165536 (1+6+5+5+3+6 = 26,  2+6 = 8) => 8
  */
 function getDigitalRoot(num) {
-    throw new Error('Not implemented');
+    if (num < 10) {
+        return num;
+    }
+        return getDigitalRoot((num % 10) + getDigitalRoot(Math.floor(num / 10)));
 }
 
 
@@ -296,7 +307,20 @@ function getDigitalRoot(num) {
  *   '{[(<{[]}>)]}' = true 
  */
 function isBracketsBalanced(str) {
-    throw new Error('Not implemented');
+  let strlen = str.length;
+  let bracketsConfig = [['[', ']'],['{', '}'], ['(', ')'], ['<', '>']];
+  for(let i = 0; i < strlen; i++) {
+    bracketsConfig.forEach(function (bracket) {
+      let bracketPair = bracket.join('');
+      let substr = str.indexOf(bracketPair);
+
+      if (substr !== -1) {
+        str = str.replace(bracketPair, '');
+      }
+    });
+  }
+
+  return !str;
 }
 
 
