@@ -158,7 +158,7 @@ function doRectanglesOverlap(rect1, rect2) {
  *   
  */
 function isInsideCircle(circle, point) {
-    throw new Error('Not implemented');
+  return Math.sqrt(Math.pow(point.x - circle.center.x, 2) + Math.pow(point.y - circle.center.y, 2)) < circle.radius;
 }
 
 
@@ -174,7 +174,9 @@ function isInsideCircle(circle, point) {
  *   'entente' => null
  */
 function findFirstSingleChar(str) {
-    throw new Error('Not implemented');
+    return str.split('').filter(function (character, index, obj) {
+        return obj.indexOf(character) === obj.lastIndexOf(character);
+    }).shift();
 }
 
 
@@ -380,7 +382,16 @@ function timespanToHumanString(startDate, endDate) {
  *    365, 10 => '365'
  */
 function toNaryString(num, n) {
-    throw new Error('Not implemented');
+  let fromDecVal = [];
+  if (num < n) {
+    return num;
+  }
+  while (num > 1) {
+    fromDecVal.push(num % n);
+    num = Math.floor(num / n);
+  }
+  num === 1 ? fromDecVal.push(num) : false;
+  return fromDecVal.reverse().join('');
 }
 
 
